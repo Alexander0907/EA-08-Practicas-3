@@ -17,7 +17,7 @@ public class ArbolController {
 
     @GetMapping
     public String listarArboles(Model model) {
-        model.addAttribute("arboles", arbolService.listarArboles());
+        model.addAttribute("arbol", arbolService.listarArboles());
         return "arboles";
     }
 
