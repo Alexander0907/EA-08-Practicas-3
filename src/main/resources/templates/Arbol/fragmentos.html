@@ -14,7 +14,29 @@
         <button type="submit">Guardar</button>
     </form>
 </div>
-        
+        <div th:fragment="arbol" id="arbol">
+       <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="arbol : ${listaArboles}">
+            <td th:text="${arbol.id}"></td>
+            <td th:text="${arbol.nombre}"></td>
+            <td th:text="${arbol.tipo}"></td>
+            <td>
+                <a th:href="@{/arbol/editar/{id}(id=${arbol.id})}">Editar</a> |
+                <a th:href="@{/arbol/eliminar/{id}(id=${arbol.id})}" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+ </div>
       
     </body>
 </html>
