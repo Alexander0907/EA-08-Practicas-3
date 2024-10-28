@@ -10,7 +10,6 @@ import lombok.Data;
 @Table(name="arbol")
 public class Arbol implements Serializable{
     
-    private static final long SerialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
