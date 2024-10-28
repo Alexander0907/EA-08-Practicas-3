@@ -1,15 +1,42 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}"/>
     <body>
-        <div>TODO write content</div>
+        <div th:fragment="formulario_arbol" id="arbol">
+    <form action="#" th:action="@{/arbol/guardar}" th:object="${arbol}" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" />
+
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" th:field="*{tipo}" />
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+        <div th:fragment="arbol" id="arbol">
+       <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="arbol : ${listaArboles}">
+            <td th:text="${arbol.id}"></td>
+            <td th:text="${arbol.nombre}"></td>
+            <td th:text="${arbol.tipo}"></td>
+            <td>
+                <a th:href="@{/arbol/editar/{id}(id=${arbol.id})}">Editar</a> |
+                <a th:href="@{/arbol/eliminar/{id}(id=${arbol.id})}" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+ </div>
+      
     </body>
 </html>

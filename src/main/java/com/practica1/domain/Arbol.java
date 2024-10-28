@@ -1,21 +1,35 @@
 
 package com.practica1.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import lombok.Data;
 
+@Data
 @Entity
-public class Arbol {
+@Table(name="arbol")
+public class Arbol implements Serializable{
+    
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name ="id")
     private Long id;
+    @Column(name ="nombre_comun")
     private String nombreComun;
+    @Column(name ="tipo_flor")
     private String tipoFlor;
+    @Column(name ="dureza_madera")
     private String durezaMadera;
-    private int altura;
+    @Column(name ="altura_promedio")
+    private float altura;
+    @Column(name ="ruta_imagen")
     private String rutaImagen;
 
-  
+    public Arbol(){
+        
+    }
+    
+    
 }
+
